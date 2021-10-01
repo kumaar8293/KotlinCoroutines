@@ -1,3 +1,5 @@
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import kotlin.system.measureTimeMillis
@@ -16,28 +18,23 @@ fun main() = runBlocking {
      * Code execution within coroutine is by default sequential.
      * **/
 
-  /*  val msg1 = getMessageOne()
-    val msg2 = getMessageTwo()
-    println("The entire message is: $msg1 $msg2") */
-
-    /** We can check time taken for the both suspend function
-     * getMessageOne() takes 1000L and getMessageTwo() takes 1000L == Total 2000
-     *  **/
     val time = measureTimeMillis {
-        val msg0 = getMessageOne()
-        val msg01 = getMessageTwo()
-        println("The entire message is: $msg0 $msg01")
+        val msg0: Deferred<String> = async { // Since async is a coroutine builder, it will create a different coroutine on main thread.
+            getMessageOne()
+        }
+        val msg01: Deferred<String> = async { getMessageTwo() }
+        println("The entire message is: ${msg0.await()} ${msg01.await()}")
     }
     println("Complete in : $time")
     println("Main Method ends $threadName")
 }
 
-suspend fun getMessageOne(): String {
+private suspend fun getMessageOne(): String {
     delay(1000L)
     return "Hey"
 }
 
-suspend fun getMessageTwo(): String {
+private suspend fun getMessageTwo(): String {
     delay(1000L)
     return "Buddy"
 }
