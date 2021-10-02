@@ -2,6 +2,7 @@
 ### About this project:
 * If you want to get started with Kotlin Coroutines, then may be this project is for you. Learn Kotlin Coroutines, its basics and Fundamentals from scratch. 
 ## Topics to be covered
+
 ##1. What are Coroutines?
    - Light-weight Threads but **`Coroutines != Thread.`**
    - Like Thread Coroutines can run in parallel/Concurrent, wait for each other, and communicate with each other.
