@@ -20,7 +20,7 @@
      A. launch [Fire and Forget]
    - Launches a new Coroutine **_without blocking the current thread_**.
    - Inherits the thread and coroutine scope of immediate parent coroutine.
-   - Return the reference og **Job object**.
+   - Return the reference of **Job object**.
    - Using Job object you can cancel or wait for the coroutine to finish.
 
     B. async
