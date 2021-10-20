@@ -1,7 +1,7 @@
 ## Kotlin Coroutines Tutorials/Programs
 ### About this project:
 * If you want to get started with Kotlin Coroutines, then may be this project is for you. Learn Kotlin Coroutines, its basics and Fundamentals from scratch. 
-## Key Points:
+## Key Points :
 
 ### 1.What are Coroutines?
    - Light-weight Threads but **`Coroutines != Thread.`**
@@ -29,7 +29,31 @@
    - Return the reference of **`Deferred<T>`** object, Which is subclass of Job object.
    - Using DeferredObject you can cancel or wait for the coroutine to finish.
    - We can use that return value `[val deferredValue = deferredJob.await()]`
+   - In case to wait => If you don't want to use the return type then use **join()** else **await()**
+#### C. runBlocking
+- **runBlocking()** is generally used to write test cases to test the suspending functions.
+- launch and async are non-blocking in nature but runBlocking() **blocks the thread**.
+#### D. withContext
+- It is used to switch Context.
+- It's a suspending function, and it's cancellable by default.
 
+
+
+
+
+- launch, async, runBlocking, withContext, withTimeoutOrNull,
+
+
+- Suspending function
+- Cancellation and Timeouts
+- Cooperative suspending functions and isActive flag
+- Exception Handling in Coroutines
+- Sequential execution of suspending function in Coroutines
+- Concurrency within Coroutine
+- lazy 'async'
+- CoroutineScope and CoroutineContext
+- Dispacthers: Confined dispatcher, Default Dispatcher, and Unconfined Displatcher
+## Author
 
 
 ## Author
