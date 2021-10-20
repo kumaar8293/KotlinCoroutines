@@ -37,6 +37,20 @@
 - It is used to switch Context.
 - It's a suspending function, and it's cancellable by default.
 
+### 3. Cancel Coroutine
+#### Why Would you cancel a Coroutine?
+- A: Result no longer needed.
+- B: Coroutine taking too long to respond. etc.
+
+#### How to cancel a Coroutine?
+- To cancel a Coroutine, it should be cooperative.
+- **job.cancel()** => If the coroutine is cooperative then cancel it.
+- **job.join()** => Wait for the coroutine to finish.
+- **job.cancelAndJoin()** => If the coroutine is cooperative then cancel it else Wait for the coroutine to finish.
+#### What is cooperative? and how to make Coroutine cooperative?
+- Only those suspending functions that belongs to kotlinx.coroutines package will make coroutine cooperative.
+- delay(), yield(), withContext(), withTimeOut() etc. are the suspending functions that belongs to kotlinx.coroutines package.
+- There is another way to make coroutine cooperative => Explicitly check for cancellation status within the coroutine [CoroutineScope.isActive]
 
 
 
@@ -44,9 +58,8 @@
 - launch, async, runBlocking, withContext, withTimeoutOrNull,
 
 
-- Suspending function
-- Cancellation and Timeouts
-- Cooperative suspending functions and isActive flag
+
+- Timeouts
 - Exception Handling in Coroutines
 - Sequential execution of suspending function in Coroutines
 - Concurrency within Coroutine
