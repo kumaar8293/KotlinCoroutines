@@ -58,15 +58,40 @@
 -  If we want to execute a suspending function from a finally block then wrap the code  within the **`withContext(NonCancellable)`** function
 ### 6. Timeout in Coroutine
 #### withTimeout(timeMillis)
-- Runs a given suspending [block] of code inside a coroutine with a specified [timeout][timeMillis] and throws a [TimeoutCancellationException] if the timeout was exceeded. 
+- Runs a given suspending **[block]** of code inside a coroutine with a specified **[timeout][timeMillis]** and throws a [TimeoutCancellationException] if the timeout was exceeded. 
 #### withTimeoutOrNull(timeMillis)
-- Runs a given suspending block of code inside a coroutine with a specified [timeout][timeMillis] and returns`null` if this timeout was exceeded.
+- Runs a given suspending **[block]** of code inside a coroutine with a specified **[timeout][timeMillis]** and returns`null` if this timeout was exceeded.
 
-- Sequential execution of suspending function in Coroutines
-- Concurrency within Coroutine
-- lazy 'async'
-- CoroutineScope and CoroutineContext
-- Dispacthers: Confined dispatcher, Default Dispatcher, and Unconfined Displatcher
+
+### 7. Execution of Coroutines
+#### A. Sequential Execution
+- Function execution are sequential by default.
+#### B. Concurrent Execution
+- Achieve concurrent execution by async{ },launch{ }.
+#### C. Lazy Coroutine Execution
+- Lazily execute code in coroutine.
+- **`val msg0 = async(start = CoroutineStart.LAZY) { print("AAA") }`**
+- **`val msg1 = async (start = CoroutineStart.LAZY){ print("BBB")}`** 
+- If we simply run the above code it won't print anything because we re not using the return type [msg0, msg1].
+- In case of **`(start = CoroutineStart.LAZY)`** we should always use return value else [block] won't execute.
+
+### 8. Dispatchers, CoroutineContext, and CoroutineScope
+- Each coroutine has its own CoroutineScope.
+- ![img_without_dispatcher.png](img.png)
+- launch{ } => Without Parameter: CONFINED => [CONFINED DISPATCHER]
+- Inherits CoroutineContext from immediate parent coroutine.
+- Even after delay() or suspending function, it continues to run in the same thread.
+
+- ![img_with_default_dispatcher.png](img_1.png)
+- With parameter: Dispatchers.Default [similar to GlobalScope.launch { } ]
+- Gets its own context at Global level. Executes in a separate background thread.
+- After delay() or suspending function execution,it continues to run either in the same thread or some other thread.
+
+- ![img_with_unconfined_dispatcher.png](img_2.png)
+- Inherits CoroutineContext from the immediate parent coroutine.
+- After delay() or suspending function execution, it continues to run in some other thread.
+
+- ![img_with_coroutinecontext.png](img_with_coroutinecontext.png)
 ## Author
 
 
