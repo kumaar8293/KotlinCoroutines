@@ -1,7 +1,7 @@
 ## Kotlin Coroutines Tutorials/Programs
 ### About this project:
 * If you want to get started with Kotlin Coroutines, then may be this project is for you. Learn Kotlin Coroutines, its basics and Fundamentals from scratch. 
-## Topics to be covered:
+## Key Points:
 
 ### 1.What are Coroutines?
    - Light-weight Threads but **`Coroutines != Thread.`**
