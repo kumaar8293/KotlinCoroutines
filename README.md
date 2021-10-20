@@ -37,31 +37,31 @@
 - It is used to switch Context.
 - It's a suspending function, and it's cancellable by default.
 
-### 3. Cancel Coroutine
-#### Why Would you cancel a Coroutine?
+### 5. Cancel Coroutine
+#### A. Why Would you cancel a Coroutine?
 - A: Result no longer needed.
 - B: Coroutine taking too long to respond. etc.
 
-#### How to cancel a Coroutine?
+#### B. How to cancel a Coroutine?
 - To cancel a Coroutine, it should be cooperative.
 - **job.cancel()** => If the coroutine is cooperative then cancel it.
 - **job.join()** => Wait for the coroutine to finish.
 - **job.cancelAndJoin()** => If the coroutine is cooperative then cancel it else Wait for the coroutine to finish.
-#### What is cooperative? and how to make Coroutine cooperative?
+#### C. What is cooperative? and how to make Coroutine cooperative?
 - Only those suspending functions that belongs to kotlinx.coroutines package will make coroutine cooperative.
 - **`delay(), yield(), withContext(), withTimeOut()`** etc. are the suspending functions that belongs to **`kotlinx.coroutines`** package.
 - There is another way to make coroutine cooperative => Explicitly check for cancellation status within the coroutine **`[CoroutineScope.isActive]`**
 
-#### Handling Cancellation Exceptions?
+#### D. Handling Cancellation Exceptions?
 - Cancellable suspending functions such as yield(), delay() etc. throw **CancellationException** on the coroutine cancellation.
 - **NOTE :** We can't run suspending function from Finally block, because the coroutine running this code is already cancelled.
 -  If we want to execute a suspending function from a finally block then wrap the code  within the **`withContext(NonCancellable)`** function
-- launch, async, runBlocking, withContext, withTimeoutOrNull,
+### 6. Timeout in Coroutine
+#### withTimeout(timeMillis)
+- Runs a given suspending [block] of code inside a coroutine with a specified [timeout][timeMillis] and throws a [TimeoutCancellationException] if the timeout was exceeded. 
+#### withTimeoutOrNull(timeMillis)
+- Runs a given suspending block of code inside a coroutine with a specified [timeout][timeMillis] and returns`null` if this timeout was exceeded.
 
-
-
-- Timeouts
-- Exception Handling in Coroutines
 - Sequential execution of suspending function in Coroutines
 - Concurrency within Coroutine
 - lazy 'async'
