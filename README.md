@@ -49,12 +49,13 @@
 - **job.cancelAndJoin()** => If the coroutine is cooperative then cancel it else Wait for the coroutine to finish.
 #### What is cooperative? and how to make Coroutine cooperative?
 - Only those suspending functions that belongs to kotlinx.coroutines package will make coroutine cooperative.
-- delay(), yield(), withContext(), withTimeOut() etc. are the suspending functions that belongs to kotlinx.coroutines package.
-- There is another way to make coroutine cooperative => Explicitly check for cancellation status within the coroutine [CoroutineScope.isActive]
+- **`delay(), yield(), withContext(), withTimeOut()`** etc. are the suspending functions that belongs to **`kotlinx.coroutines`** package.
+- There is another way to make coroutine cooperative => Explicitly check for cancellation status within the coroutine **`[CoroutineScope.isActive]`**
 
-
-
-
+#### Handling Cancellation Exceptions?
+- Cancellable suspending functions such as yield(), delay() etc. throw **CancellationException** on the coroutine cancellation.
+- **NOTE :** We can't run suspending function from Finally block, because the coroutine running this code is already cancelled.
+-  If we want to execute a suspending function from a finally block then wrap the code  within the **`withContext(NonCancellable)`** function
 - launch, async, runBlocking, withContext, withTimeoutOrNull,
 
 
