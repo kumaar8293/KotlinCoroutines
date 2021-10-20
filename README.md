@@ -92,7 +92,6 @@
 - After delay() or suspending function execution, it continues to run in some other thread.
 
 - ![img_with_coroutinecontext.png](img_with_coroutinecontext.png)
-## Author
 
 
 ## Author
