@@ -77,17 +77,17 @@
 
 ### 8. Dispatchers, CoroutineContext, and CoroutineScope
 - Each coroutine has its own CoroutineScope.
-- ![img_without_dispatcher.png](img.png)
+- ![img_without_dispatcher.png](img_without_dispatcher.png)
 - launch{ } => Without Parameter: CONFINED => [CONFINED DISPATCHER]
 - Inherits CoroutineContext from immediate parent coroutine.
 - Even after delay() or suspending function, it continues to run in the same thread.
 
-- ![img_with_default_dispatcher.png](img_1.png)
+- ![img_with_default_dispatcher.png](img_with_default_dispatcher.png)
 - With parameter: Dispatchers.Default [similar to GlobalScope.launch { } ]
 - Gets its own context at Global level. Executes in a separate background thread.
 - After delay() or suspending function execution,it continues to run either in the same thread or some other thread.
 
-- ![img_with_unconfined_dispatcher.png](img_2.png)
+- ![img_with_unconfined_dispatcher.png](img_with_unconfined_dispatcher.png)
 - Inherits CoroutineContext from the immediate parent coroutine.
 - After delay() or suspending function execution, it continues to run in some other thread.
 
