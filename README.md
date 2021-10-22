@@ -93,7 +93,7 @@
 
 - ![img_with_coroutinecontext.png](img_with_coroutinecontext.png)
 - **`Dispatchers.Main`** => Main thread safety.
-- `**Dispatchers.IO**` => Network Request or Disk read write.
+- **`Dispatchers.IO`** => Network Request or Disk read write.
 - **`Dispatchers.default`** => CPU intensive task
 
 ## Author
